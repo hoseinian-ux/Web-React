@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/src/Helpers/Search.js"></script>
+    <script src="/src/Helpers/Menu.js"></script>
+    <script src="/src/Helpers/timeset.js"> </script>
+    <title>Vite + React</title>
+    
+    <script>
+
+       $(window).scroll(() => {
+            
+            $(document).ready(function()
+            {
+                $('.search-box form input').on('click',function()
+                    {
+                        $(this).parents('.search-box').addClass('show-result').find('.search-result').fadeIn();
+                    });
+                $('.search-box form input').keyup(function()
+                    {
+                        $(this).parents('.search-box').addClass('show-result').find('.search-result').fadeIn();
+                        $(this).parents('.search-box').find('.search-result-list').fadeIn();
+                        if($(this).val().length == 0){
+                            $(this).parents('.search-box').removeClass('show-result').find('.search-result').fadeOut(100);
+                            $(this).parents('.search-box').find('.search-result-list').fadeIn();
+                        }else{
+                            $(this).parents('.search-box').find('.search-result').fadeIn(100);
+                            $(this).parents('.search-box').find('.search-result-list').fadeIn();  
+                        }
+                    });
+                $(document).click(function(e)
+                    {
+                        if($(e.target).is('.search-box *')) return;
+                        $('.search-result').hide();
+                    });
+            });
+        });
+
+    </script>
+    <script type="module" crossorigin src="/assets/index-Bvy9xHkx.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DZOWs6UV.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
